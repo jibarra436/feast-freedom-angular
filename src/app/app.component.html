@@ -77,7 +77,7 @@
 </head>
 <body>
 <div class="navbar">
-    <h3>FeastFreedom</h3>
+    <h3>Feast Freedom</h3>
     
     <a href="#UserProfile">John Smith <span class="material-icons md-24">person</span><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <i class="material-icons"> </i>  </a>
@@ -94,7 +94,7 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a routerLink="createkitchen" routerLinkActive="active" >Register As User</a>
+      <a routerLink="createuser" routerLinkActive="active" >Register As User</a>
       <a routerLink="createkitchen" routerLinkActive="active" >Register As Kitchen</a>
       <router-outlet></router-outlet>
     </div>
@@ -105,8 +105,18 @@
 <router-outlet></router-outlet>
 
 
-<h3>Feast Freedom</h3>
-<p>Welcome to our site</p>
+      <div class='flex-row' layout="row" layout-wrap>
+        <mat-card *ngFor="let kitchen of kitchenList" flex="40" flex-sm="80" ng-repeat="user in users">
+          <img mat-card-image src="{{kitchen.imageURL}}">
+          <mat-card-content>
+            <h2>{{kitchen.kitchenName}}</h2>
+            <p>Open/Closed</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button>Order</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
 
 </body>
  

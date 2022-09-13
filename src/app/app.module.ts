@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CreatekitchenComponent } from './createkitchen.component';
 import { KitchenService } from './services/kitchen.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,                               
-    ReactiveFormsModule 
+    ReactiveFormsModule, BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [KitchenService],
   bootstrap: [AppComponent]
