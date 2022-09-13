@@ -3,7 +3,7 @@ export class Kitchen {
   email: string;
   imageURL: string;
   kitchenName: string;
-  psw: string;
+  password: string;
   workingDays: string;
   workingTime: string;
   menu: string;

@@ -9,14 +9,15 @@ export class KitchenService {
   private kUrl: string;
 
   constructor(private http: HttpClient) {
-    this.kUrl = '/api/kitchen/';
+    this.kUrl = '/api';
   }
 
   public getKitchens() {
-    return this.http.get<Kitchen[]>(this.kUrl);
+    return this.http.get<Kitchen[]>(this.kUrl+'/kitchen');
   }
 
   public save(kit: Kitchen) {
-    return this.http.post<Kitchen>(this.kUrl, kit);
+    console.log('Saving '+kit.kitchenName);
+    return this.http.post<Kitchen>(this.kUrl+'/createkitchen', kit);
   }
 }

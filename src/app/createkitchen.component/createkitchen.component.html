@@ -10,25 +10,48 @@
 
 <h2>Kitchen Registration</h2>
 
-    <form (ngSubmit)="createkitchen()" #userForm="ngForm">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" [(ngModel)]= "kit.email" email = "email"
-                placeholder = "Enter your email" formControlName="email" class="form-control"/>
-            </div>
-            <div class="form-group">
-                <label for="name">Kitchen Name:</label>
-                <input type="text" [(ngModel)]= "kit.kitchenName" kitchenName = "name"
-                placeholder = "Enter the Name" formControlName="password" class="form-control"/>
-            </div>
-            <div class="form-group">
-                <label for="psw">Password:</label>
-                <input type="password" [(ngModel)]= "kit.psw" psw = "psw"
-                placeholder = "Enter your Password" formControlName="psw" class="form-control"/>
-            </div>
-        </form>
-    <button type="submit">Register</button>
+<div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Kitchen Name</div>
+      <div class="col-xs-9">{{ kit.kitchenName }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Email</div>
+      <div class="col-xs-9">{{ kit.email }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Password</div>
+      <div class="col-xs-9">{{ kit.password }}</div>
+    </div>
+    <br>
+</div>
 
+<div [hidden]="submitted">
+{{ kit | json }} <!--REMOVE WHEN DONE DEBUGGING-->
+<form (ngSubmit)="createkitchen()" #kitchenForm="ngForm">
+    <div class="form-group">
+        <label for="name">Kitchen Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="kit.kitchenName" name="kitchen name">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text"  class="form-control" id="email"
+              [(ngModel)]="kit.email" name="email">
+      </div>
+      
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="text"  class="form-control" id="psw"
+                [(ngModel)]="kit.password" name="psw">
+        </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!kitchenForm.form.valid">Submit</button>
+</form>
+</div>
 
 </body>
 
