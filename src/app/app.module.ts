@@ -10,8 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { CreateuserComponent } from './createuser/createuser.component';
+
 import { KitchenloginComponent } from './kitchenlogin/kitchenlogin.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { UserloginComponent } from './userlogin/userlogin.component';
     HttpClientModule,
     FormsModule,                               
     ReactiveFormsModule, BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
