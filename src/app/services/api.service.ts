@@ -31,4 +31,9 @@ export class ApiService{
     console.log('Saving '+us.firstName);
     return this.http.post<Kitchen>(this.kUrl+'/createuser', us);
   }
+
+  public auth(cred: JSON, email: String){
+    console.log('Logging user'+email);
+    return this.http.post<JSON>(this.kUrl+'/authenticate', cred);
+  }
 }
