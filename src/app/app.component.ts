@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
   title = 'angular-feastfreedom';
   kitchenList: any[];
 
-  days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
   now = new Date();
 
   constructor(private service:ApiService) {};

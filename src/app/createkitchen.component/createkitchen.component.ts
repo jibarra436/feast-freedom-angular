@@ -5,6 +5,7 @@ import { Kitchen } from '../models/kitchen';
 import { delay, Observable } from 'rxjs';
 import { async, waitForAsync } from '@angular/core/testing';
 import { ApiService } from '../services/api.service';
+import {FormBuilder} from '@angular/forms';
 
 
 
@@ -22,8 +23,17 @@ export class CreatekitchenComponent {
   changeImage = false;  
   file:string;
   submitted = false;
+  selectedDays = this._formBuilder.group({
+    sunday: false,
+    monday: false,
+    tuesday: false,
+    wednesday: false,
+    thursday: false,
+    friday: false,
+    saturday: false,
+  });
 
-  constructor(private apiservice: ApiService, private https: HttpClient){
+  constructor(private apiservice: ApiService, private https: HttpClient, private _formBuilder: FormBuilder){
     this.kit = new Kitchen();
   }
 
@@ -53,6 +63,13 @@ export class CreatekitchenComponent {
 
   createkitchen() {
     console.log("Creating: "+this.kit);
+
+    // Handle working days
+    Object.keys(this.selectedDays.controls).forEach(key => {
+      if(this.selectedDays.get(key)?.value == true)
+        this.kit.workingDays += key+";"
+    });
+
     this.submitted = true;
     
     this.upload();

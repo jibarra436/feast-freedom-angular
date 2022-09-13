@@ -33,6 +33,7 @@
 
 <div [hidden]="submitted">
 {{ kit | json }} <!--REMOVE WHEN DONE DEBUGGING-->
+{{selectedDays.value | json}} <!--REMOVE WHEN DONE DEBUGGING-->
 <form (ngSubmit)="createkitchen()" #kitchenForm="ngForm">
     <div class="form-group">
         <label for="name">Kitchen Name</label>
@@ -48,6 +49,17 @@
           <label for="password">Password</label>
           <input type="text"  class="form-control" id="psw" required [(ngModel)]="kit.password" name="psw">
         </div>
+
+        <section class="working-days" [formGroup]="selectedDays">
+          <h4>Working Days:</h4>
+          <p><mat-checkbox formControlName="sunday">Sunday</mat-checkbox></p>
+          <p><mat-checkbox formControlName="monday">Monday</mat-checkbox></p>
+          <p><mat-checkbox formControlName="tuesday">Tuesday</mat-checkbox></p>
+          <p><mat-checkbox formControlName="wednesday">Wednesday</mat-checkbox></p>
+          <p><mat-checkbox formControlName="thursday">Thursday</mat-checkbox></p>
+          <p><mat-checkbox formControlName="friday">Friday</mat-checkbox></p>
+          <p><mat-checkbox formControlName="saturday">Saturday</mat-checkbox></p>
+        </section>
 
         <div class="form-group">
             <input type="file" id="customFile" required [(ngModel)]="selectedFile" (change)="selectFile($event)" placeholder="File To Upload" name="selectedFile">
