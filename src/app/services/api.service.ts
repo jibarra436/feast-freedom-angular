@@ -16,9 +16,14 @@ export class ApiService{
     return this.http.get<Kitchen[]>(this.kUrl+'/kitchen');
   }
 
-  public savekitchen(kit: Kitchen) {
+  public saveKitchen(kit: Kitchen) {
     console.log('Saving '+kit.kitchenName);
     return this.http.post<Kitchen>(this.kUrl+'/createkitchen', kit);
+  }
+
+  public uploadImage(data: FormData, email: String) {
+    console.log('Uploading '+data);
+    return this.http.post(this.kUrl+'/kitchen/'+email+'/uploadFile', data, {responseType: 'text'});
   }
 
   public saveuser(us: FeastUser) {

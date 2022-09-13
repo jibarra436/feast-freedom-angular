@@ -24,6 +24,10 @@
       <div class="col-xs-3">Password</div>
       <div class="col-xs-9">{{ kit.password }}</div>
     </div>
+    <div class="row">
+        <div class="col-xs-3">Image URL</div>
+        <div class="col-xs-9">{{ kit.imageURL }}</div>
+      </div>
     <br>
 </div>
 
@@ -32,21 +36,21 @@
 <form (ngSubmit)="createkitchen()" #kitchenForm="ngForm">
     <div class="form-group">
         <label for="name">Kitchen Name</label>
-        <input type="text" class="form-control" id="name"
-               required
-               [(ngModel)]="kit.kitchenName" name="kitchen name">
-      </div>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="kit.kitchenName" name="kitchen name">
+        </div>
       
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text"  class="form-control" id="email"
-              [(ngModel)]="kit.email" name="email">
-      </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"  class="form-control" id="email" required [(ngModel)]="kit.email" name="email">
+        </div>
       
-      <div class="form-group">
+        <div class="form-group">
           <label for="password">Password</label>
-          <input type="text"  class="form-control" id="psw"
-                [(ngModel)]="kit.password" name="psw">
+          <input type="text"  class="form-control" id="psw" required [(ngModel)]="kit.password" name="psw">
+        </div>
+
+        <div class="form-group">
+            <input type="file" id="customFile" required [(ngModel)]="selectedFile" (change)="selectFile($event)" placeholder="File To Upload" name="selectedFile">
         </div>
 
     <button type="submit" class="btn btn-success" [disabled]="!kitchenForm.form.valid">Submit</button>

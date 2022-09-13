@@ -1,7 +1,7 @@
 export class Kitchen {
   id: number;
   email: string;
-  imageURL: string;
+  imageURL: String;
   kitchenName: string;
   password: string;
   workingDays: string;
