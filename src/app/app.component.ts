@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Kitchen } from './models/kitchen';
-import { KitchenService } from './services/kitchen.service';
+import { ApiService } from './services/api.service';
 import {MatCardModule} from '@angular/material/card'; 
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   title = 'angular-feastfreedom';
   kitchenList: any[];
 
-  constructor(private service:KitchenService) {};
+  constructor(private service:ApiService) {};
 
   ngOnInit(): void {
     this.service.getKitchens().subscribe(response => {

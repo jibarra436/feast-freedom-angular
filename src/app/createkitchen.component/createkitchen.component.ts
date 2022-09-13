@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { KitchenService } from '../services/kitchen.service';
+import { ApiService } from '../services/api.service';
 import { Kitchen } from '../models/kitchen';
 
 
 
-@Component({ 
+@Component({
+  selector: 'app-createkitchen',
   templateUrl: 'createkitchen.component.html',
   styleUrls: ['./createkitchen.component.css'] 
 })
 
-export class CreatekitchenComponent {
+export class CreatekitchenComponent implements OnInit{
   kit: Kitchen
 
-  constructor(private kservice: KitchenService){
+  constructor(private kservice: ApiService){
     this.kit = new Kitchen();
+  }
+
+  ngOnInit(): void {
   }
 
   submitted = false;
@@ -23,7 +27,7 @@ export class CreatekitchenComponent {
   createkitchen(){
     console.log("Creating: "+this.kit);
     this.submitted = true;
-    this.kservice.save(this.kit).subscribe(response => {
+    this.kservice.savekitchen(this.kit).subscribe(response => {
       console.log(response);
     });
   }
