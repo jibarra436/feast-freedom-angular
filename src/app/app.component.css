@@ -13,6 +13,7 @@ mat-card::ng-deep.mat-card-header-text {
   }
 
 .flex-row {
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     flex: 50%;

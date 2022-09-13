@@ -9,7 +9,8 @@ export class ApiService{
   private kUrl: string;
 
   constructor(private http: HttpClient) {
-    this.kUrl = '/api';
+    this.kUrl = '/api'
+    //this.kUrl = 'http://3.22.137.155:8081/FeastFreedom-0.0.1-SNAPSHOT/api';
   }
 
   public getKitchens() {

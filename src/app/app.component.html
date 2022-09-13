@@ -113,9 +113,9 @@
           <img mat-card-image src="{{kitchen.imageURL}}">
           <mat-card-content>
             <h2>{{kitchen.kitchenName}}</h2>
-            <p>Open/Closed</p>
+            <p id={{kitchen.id}}>{{isOpen(kitchen)}}</p>
           </mat-card-content>
-          <mat-card-actions>
+          <mat-card-actions *ngIf="isOpen(kitchen) == 'OPEN'">
             <button>Order</button>
           </mat-card-actions>
         </mat-card>
