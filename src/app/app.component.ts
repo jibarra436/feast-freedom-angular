@@ -25,6 +25,24 @@ export class AppComponent implements OnInit{
     })
   }
 
+  logout(){
+    console.log("Logging out: "+this.getUserName());
+    localStorage.clear();
+
+    this.router.navigate([''])
+  }
+
+  loggedIn() {
+    if(localStorage.getItem('loggedIn') == "true")
+      return true;
+    else
+      return false;
+  }
+
+  getUserName() {
+    return localStorage.getItem("userFirst") + " " + localStorage.getItem("userLast")
+  }
+
   isOpen(kitchen: Kitchen) {
     const status = document.getElementById(kitchen.id.toString());
 

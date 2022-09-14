@@ -32,8 +32,13 @@ export class ApiService{
     return this.http.post<Kitchen>(this.kUrl+'/createuser', us);
   }
 
+  public getUser(email: string) {
+    console.log('Fetching '+email);
+    return this.http.get<FeastUser>(this.kUrl+'/user/email/'+email);
+  }
+
   public auth(cred: JSON, email: String){
-    console.log('Logging user'+email);
-    return this.http.post<JSON>(this.kUrl+'/authenticate', cred);
+    console.log('Logging user: '+email);
+    return this.http.post<any>(this.kUrl+'/authenticate', cred);
   }
 }

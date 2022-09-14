@@ -1,140 +1,176 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      .navbar {
+        overflow: hidden;
+        background-color: rgb(175, 0, 0);
+        font-family: cursive, Helvetica, sans-serif;
+      }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-.navbar {
-  overflow: hidden;
-  background-color: rgb(175, 0, 0);
-  font-family: cursive, Helvetica, sans-serif;
-}
+      .navbar a {
+        float: right;
+        font-size: 25px;
+        color: white;
+        text-align: center;
+        padding: 20px 25px;
+        text-decoration: none;
+        margin: 0;
+      }
+      .navbar h3 {
+        float: left;
+        font-size: 25px;
+        color: white;
+        text-align: center;
+        padding: 0px 15px;
+        text-decoration: none;
+      }
 
-.navbar a {
-  float: right;
-  font-size: 25px;
-  color: white;
-  text-align: center;
-  padding: 20px 25px;
-  text-decoration: none;
-  margin: 0;
-}
-.navbar h3 {
-  float: left;
-  font-size: 25px;
-  color: white;
-  text-align: center;
-  padding: 0px 15px;
-  text-decoration: none;
-}
+      .logo {
+        float: left;
+        padding: 0px 15px;
+      }
+      .logo:hover {
+        display: none;
+      }
 
-.logo {
-  float: left;
-  padding: 0px 15px;
-}
-.logo:hover {
-  display: none;
-}
+      .dropdown {
+        float: right;
+        overflow: hidden;
+      }
 
-.dropdown {
-  float: right;
-  overflow: hidden;
-}
+      .dropdown .dropbtn {
+        font-size: 25px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 20px 25px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+      }
 
-.dropdown .dropbtn {
-  font-size: 25px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 20px 25px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
+      .navbar a:hover,
+      .dropdown:hover .dropbtn {
+        background-color: rgb(84, 84, 114);
+      }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: rgb(84, 84, 114);
-}
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 140px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
 
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align:left;
-}
+      .dropdown-content a:hover {
+        background-color: rgb(102, 91, 91);
+      }
 
-.dropdown-content a:hover {
-  background-color: rgb(102, 91, 91);
-}
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    </style>
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
-</head>
-<body>
-<div class="navbar">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
 
-  <div class="logo">
-    <a href="/FeastFreedom-0.0.1-SNAPSHOT">
-      <img src="https://freedom-feast-kitchen-images.s3.us-east-2.amazonaws.com/feastfreedom.png">
-    </a>
-  </div>
-    
-    
-    <a href="#UserProfile">John Smith <span class="material-icons md-24">person</span><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <i class="material-icons"> </i>  </a>
-    
-    
-    <a href="#Cart"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <i class="material-icons">shopping_cart</i> Shopping Cart </a>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <a href="/FeastFreedom-0.0.1-SNAPSHOT">
+          <img
+            src="https://freedom-feast-kitchen-images.s3.us-east-2.amazonaws.com/feastfreedom.png"
+          />
+        </a>
+      </div>
 
-    
+      <div class="profile" *ngIf="loggedIn(); else notLoggedIn">
+        <a (click)="logout()">
+          {{ getUserName() }}
+          <span class="material-icons md-24">person</span>
+          <i class="material-icons"></i>
+        </a>
+      </div>
 
+      <ng-template #notLoggedIn>
+        <a href="/userlogin">
+          Log In
+          <span class="material-icons md-24">person</span>
+          <i class="material-icons"></i>
+        </a>
+      </ng-template>
 
-<div class="dropdown">
-    <button class="dropbtn">Registration 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a routerLink="createuser" routerLinkActive="active" >Register As User</a>
-      <a routerLink="createkitchen" routerLinkActive="active" >Register As Kitchen</a>
+      <a href="#Cart">
+        <i class="material-icons">shopping_cart</i>
+        Shopping Cart
+      </a>
 
-      <a routerLink="userlogin" routerLinkActive="active" >Login As User</a>
-      <a routerLink="kitchenlogin" routerLinkActive="active" >Login As Kitchen</a>
-      <router-outlet></router-outlet>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Registration
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="createuser" routerLinkActive="active">
+            Register As User
+          </a>
+          <a routerLink="createkitchen" routerLinkActive="active">
+            Register As Kitchen
+          </a>
+          <a routerLink="kitchenlogin" routerLinkActive="active">
+            Login As Kitchen
+          </a>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
-  </div> 
-  
-</div>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
-      <div *ngIf="router.url === '/'" class='flex-row' layout="row" layout-wrap>
-        <mat-card *ngFor="let kitchen of kitchenList" flex="40" flex-sm="80" ng-repeat="user in users">
-          <img mat-card-image src="{{kitchen.imageURL}}">
+    <div class="kitchens" *ngIf="loggedIn(); else kitchenNotLoggedIn">
+      <div *ngIf="router.url === '/'" class="flex-row" layout="row" layout-wrap>
+        <mat-card
+          *ngFor="let kitchen of kitchenList"
+          flex="40"
+          flex-sm="80"
+        >
+          <img mat-card-image src="{{ kitchen.imageURL }}" />
           <mat-card-content>
-            <h2>{{kitchen.kitchenName}}</h2>
-            <p id={{kitchen.id}}>{{isOpen(kitchen)}}</p>
+            <h2>{{ kitchen.kitchenName }}</h2>
+            <p id="{{ kitchen.id }}">{{ isOpen(kitchen) }}</p>
           </mat-card-content>
           <mat-card-actions *ngIf="isOpen(kitchen) == 'OPEN'">
             <button>Order</button>
           </mat-card-actions>
         </mat-card>
       </div>
+    </div>
 
-</body>
- 
+    <ng-template #kitchenNotLoggedIn>
+      <h1>
+        Please
+        <a href="/userlogin">log in</a>
+        to view service providers.
+      </h1>
+    </ng-template>
+  </body>
 </html>
