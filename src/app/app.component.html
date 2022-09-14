@@ -88,7 +88,7 @@
 <div class="navbar">
 
   <div class="logo">
-    <a href="/">
+    <a href="/FeastFreedom-0.0.1-SNAPSHOT">
       <img src="https://freedom-feast-kitchen-images.s3.us-east-2.amazonaws.com/feastfreedom.png">
     </a>
   </div>
@@ -122,8 +122,7 @@
 
 <router-outlet></router-outlet>
 
-
-      <div class='flex-row' layout="row" layout-wrap>
+      <div *ngIf="router.url === '/'" class='flex-row' layout="row" layout-wrap>
         <mat-card *ngFor="let kitchen of kitchenList" flex="40" flex-sm="80" ng-repeat="user in users">
           <img mat-card-image src="{{kitchen.imageURL}}">
           <mat-card-content>
