@@ -3,6 +3,7 @@ import { Kitchen } from './models/kitchen';
 import { ApiService } from './services/api.service';
 import {MatCardModule} from '@angular/material/card'; 
 import { NodeWithI18n } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit{
   days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
   now = new Date();
 
-  constructor(private service:ApiService) {};
+  constructor(private service:ApiService, public router: Router) {};
 
   ngOnInit(): void {
     this.service.getKitchens().subscribe(response => {

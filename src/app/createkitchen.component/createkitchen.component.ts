@@ -65,6 +65,7 @@ export class CreatekitchenComponent {
     console.log("Creating: "+this.kit);
 
     // Handle working days
+    this.kit.workingDays = '';
     Object.keys(this.selectedDays.controls).forEach(key => {
       if(this.selectedDays.get(key)?.value == true)
         this.kit.workingDays += key+";"
