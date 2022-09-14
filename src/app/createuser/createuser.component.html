@@ -65,7 +65,7 @@
          <label for="secQuestion1">Security Question 1</label>
          <select name="secQuestion1" id="secQuestion1" [(ngModel)]="us.secQuestion1">
           <option [ngValue]="null" disabled>Select Security Question</option>
-          <option *ngFor="let secQuestion1 of questions1">{{secQuestion1.name}}</option>
+          <option *ngFor="let secQuestion1 of questions1" [ngValue]="secQuestion1.id">{{secQuestion1.name}}</option>
          </select>
       </div>
 
