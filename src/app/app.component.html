@@ -124,7 +124,7 @@
         Shopping Cart
       </a>
 
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="!loggedIn()">
         <button class="dropbtn">
           Registration
           <i class="fa fa-caret-down"></i>
@@ -139,7 +139,6 @@
           <a routerLink="kitchenlogin" routerLinkActive="active">
             Login As Kitchen
           </a>
-          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
