@@ -60,7 +60,36 @@
                 [(ngModel)]="us.password" name="psw">
         </div>
 
-        <!--SECURITY QUESTIONS IMPLEMENTED HERE-->
+        
+      <div class="form-group">
+         <label for="secQuestion1">Security Question 1</label>
+         <select name="secQuestion1" id="secQuestion1" [(ngModel)]="us.secQuestion1">
+          <option [ngValue]="null" disabled>Select Security Question</option>
+          <option *ngFor="let secQuestion1 of questions1">{{secQuestion1.name}}</option>
+         </select>
+      </div>
+
+      <div class="form-group">
+          <label for="secAnswer1">Answer</label>
+          <input type="text"  class="form-control" id="secAnswer1"
+                [(ngModel)]="us.secAnswer1" name="secAnswer1">
+      </div>
+
+      <div class="form-group">
+         <label for="secQuestion2">Security Question 2</label>
+         <select name="secQuestion2" id="secQuestion2"  [(ngModel)]="us.secQuestion2">
+          <option [ngValue]="null" disabled>Select Security Question</option>
+          <option *ngFor="let secQuestion2 of questions2" [ngValue]="secQuestion2.id">{{secQuestion2.name}}</option>
+         </select>
+      </div>
+
+      <div class="form-group">
+          <label for="secAnswer2">Answer</label>
+          <input type="text"  class="form-control" id="secAnswer2"
+                [(ngModel)]="us.secAnswer2" name="secAnswer2">
+      </div>
+
+      
 
     <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Submit</button>
 </form>

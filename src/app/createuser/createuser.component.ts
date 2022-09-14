@@ -19,9 +19,24 @@ export class CreateuserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   submitted = false;
+
+  questions1 = [
+    { id: 0, name: "What was the name of your favourite Teacher?" },
+    { id: 1, name: "What was your first job?" },
+    { id: 2, name: "What was the name of your first pet?" },
+    { id: 3, name: "What is your favourite food?" }
+  ];
+
+  questions2 = [
+    { id: 0, name: "What was the name of your favourite Teacher?" },
+    { id: 1, name: "What was your first job?" },
+    { id: 2, name: "What was the name of your first pet?" },
+    { id: 3, name: "What is your favourite food?" }
+  ];
 
   login(user: FeastUser, apiService: ApiService, router: Router){
     console.log("Logging in: "+user.email);
